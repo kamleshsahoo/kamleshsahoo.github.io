@@ -521,7 +521,7 @@ connection-strength
 connection-strength
 0.1
 3
-1.1
+1.0
 0.05
 1
 NIL
@@ -604,7 +604,7 @@ Depmood
 Depmood
 -5
 5
--2.0
+0.0
 1
 1
 NIL
