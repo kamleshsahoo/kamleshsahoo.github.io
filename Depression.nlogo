@@ -73,8 +73,8 @@ to setup-symptoms
 end
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Setup network: creates fully connected network, assigns  ;;
-;; weights to the links                                     ;;
+;; Setup network ;;
+;; and assign weights to the links                                     ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 to setup-network
 ask symptom 0  [create-link-with symptom 1]
@@ -228,8 +228,6 @@ ask symptom 12  [create-link-with symptom 13]
 end
 
 to go
-  ;if ticks = 20 [stop]
-  ;if ticks = 10 [file-close-all]
   spread-activation
   list-mood
   tick
@@ -238,17 +236,10 @@ to go
   make-histogram
   episode-counter
 
-  ;file-open "output.txt"
-  ;file-write (count symptoms with [symptom-present?])
-
 end
 
 to administer-shock
   set shock 0
-;  ask links
-;  [
-;    set weight-edge 0
-;  ]
 end
 
 
@@ -286,9 +277,6 @@ end
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Calculates the likelihood with a logistic function                ;;
-;; Makes a list with the actual activation values of the symptoms    ;;
-;; Makes a matrix from list-activation-all to perform matrix algebra ;;
-;; and calculates the chance to become activated in a random order   ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 to calculate-chance-to-become-activated
   ind-stress
@@ -350,26 +338,19 @@ to episode-counter
     let last14days sublist mood (length mood - 14) (length mood)
     ifelse length (filter [i -> i >= 7] last14days) = 14
     [ifelse episode-continue?
-      [ ;show "this is running1"
-        set episode 1]
-      [ ;show "this is running2"
-        set episode 1
+      [ set episode 1]
+      [ set episode 1
         set episode-cntr episode-cntr + 1
         if kindling-effect? [set connection-strength-after-episode connection-strength-after-episode + 0.01]
         set episode-continue? true]
     ]
     [ifelse length (filter [i -> i >= 7] last14days) > 7
       [ if episode-continue?
-        [;show "this is running3"
-          set episode 1]
+        [ set episode 1]
       ]
-      [ ;show "this is running4"
-        set episode 0
+      [ set episode 0
         set episode-continue? false ]
     ]
-
-    ;show last14days
-    ;show connection-strength-after-episode
 
   ]
 end
@@ -411,19 +392,13 @@ end
 to update-plot
   set-current-plot "Network Status"
        set-current-plot-pen "cut-off"
-  ;; we don't want the "auto-plot" feature to cause the
-  ;; plot's x range to grow when we draw the axis.  so
-  ;; first we turn auto-plot off temporarily
+
   auto-plot-off
   plotxy 0 7
   plotxy 1000000000 7
   auto-plot-on
   set-current-plot-pen "symptom-present"
   plot (count symptoms with [symptom-present?])
-  ;set-current-plot-pen "external-activation"
-  ;plot ((external-activation + 8) / 2)
-  ;set-current-plot-pen "connection-strength"
-  ;plot (connection-strength * 5)
 
   set-current-plot "Hysteresis plot"
   set-current-plot-pen "symptom-present"
@@ -431,12 +406,11 @@ to update-plot
   [set-plot-pen-color 15
  set external-stress external-activation ]
   [set-plot-pen-color 105]
- ;set external-stress external-activation ]
-  plotxy (external-activation) (mean mood)        ;(count symptoms with [symptom-present?])
+  plotxy (external-activation) (mean mood)
 
   set-current-plot "Depressive episodes"
   set-current-plot-pen "episode"
-  plot episode                               ;-cntr
+  plot episode
 end
 
 to make-histogram
