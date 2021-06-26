@@ -19,6 +19,7 @@ links-own
 globals
 [
   mood
+  external-stress
   shock
   episode-cntr
   episode
@@ -54,6 +55,7 @@ to setup
   set episode 0
   set episode-continue? false
   set connection-strength-after-episode connection-strength
+  set external-stress external-activation
   reset-ticks
 end
 
@@ -65,7 +67,7 @@ to setup-symptoms
   layout-circle (sort symptoms) max-pxcor - 4.5
   ask symptoms
     [
-      setxy (xcor * 0.70) (ycor * 0.70)
+      setxy (xcor * 0.71) (ycor * 0.71)
       become-symptom-absent
     ]
 end
@@ -149,79 +151,79 @@ ask symptom 11  [create-link-with symptom 12]
 ask symptom 11  [create-link-with symptom 13]
 ask symptom 12  [create-link-with symptom 13]
 
-  ask link 0 1   [set weight-edge 2.1407 set color 9]
-  ask link 0 2   [set weight-edge 0.7232 set color 9]
-  ask link 0 3   [set weight-edge 0.2041 set color 9]
-  ask link 0 4   [set weight-edge 1.1296 set color 9]
-  ask link 0 5   [set weight-edge 0.5217 set color 9]
-  ask link 0 6   [set weight-edge 1.0530 set color 9]
-  ask link 0 7   [set weight-edge 0.9409 set color 9]
-  ask link 0 8   [set weight-edge 0.7484 set color 9]
-  ask link 0 9   [set weight-edge 0.6849 set color 9]
-  ask link 0 10  [set weight-edge 1.0979 set color 9]
-  ask link 0 11  [set weight-edge 1.8733 set color 9]
-  ask link 0 12  [set weight-edge 1.0211 set color 9]
-  ask link 0 13  [set weight-edge 2.0693 set color 9]
-  ask link 1 2   [set weight-edge 0.1766 set color 9]
-  ask link 1 3   [set weight-edge 0.2811 set color 9]
-  ask link 1 4   [set weight-edge 0.5763 set color 9]
-  ask link 1 5   [set weight-edge 0.2392 set color 9]
-  ask link 1 6   [set weight-edge 0.4273 set color 9]
-  ask link 1 7   [set weight-edge 0.5311 set color 9]
-  ask link 1 8   [set weight-edge 0.4459 set color 9]
-  ask link 1 9   [set weight-edge 0.6564 set color 9]
-  ask link 1 10  [set weight-edge 0.5070 set color 9]
-  ask link 1 11  [set weight-edge 0.6826 set color 9]
-  ask link 1 12  [set weight-edge 0.8178 set color 9]
-  ask link 1 13  [set weight-edge 0.4986 set color 9]
-  ask link 2 3   [set weight-edge -0.6082 set color 9]
-  ask link 2 4   [set weight-edge 2.9840 set color 9]
-  ask link 2 6   [set weight-edge 0.2045 set color 9]
-  ask link 2 11  [set weight-edge 0.3772 set color 9]
-  ask link 2 12  [set weight-edge 0.1063 set color 9]
-  ask link 2 13  [set weight-edge 0.252 set color 9]
-  ask link 3 4   [set weight-edge -0.5389 set color 9]
-  ask link 3 5   [set weight-edge 3.165 set color 9]
-  ask link 3 6   [set weight-edge 0.2672 set color 9]
-  ask link 3 7   [set weight-edge 0.2041 set color 9]
-  ask link 3 10  [set weight-edge 0.4112 set color 9]
-  ask link 3 11  [set weight-edge 0.5226 set color 9]
-  ask link 4 6   [set weight-edge 0.7033 set color 9]
-  ask link 4 7   [set weight-edge 0.4020 set color 9]
-  ask link 4 8   [set weight-edge 0.4724 set color 9]
-  ask link 4 9   [set weight-edge 0.2219 set color 9]
-  ask link 4 10  [set weight-edge 0.2284 set color 9]
-  ask link 4 11  [set weight-edge 0.1203 set color 9]
-  ask link 4 12  [set weight-edge 0.4177 set color 9]
-  ask link 4 13  [set weight-edge 0.1198 set color 9]
-  ask link 5 7   [set weight-edge 0.5475 set color 9]
-  ask link 5 8   [set weight-edge 0.4890 set color 9]
-  ask link 5 9   [set weight-edge 0.2914 set color 9]
-  ask link 5 10  [set weight-edge 0.4546 set color 9]
-  ask link 5 13  [set weight-edge 0.1620 set color 9]
-  ask link 6 7   [set weight-edge -0.5009 set color 9]
-  ask link 6 8   [set weight-edge 1.2951 set color 9]
-  ask link 6 10  [set weight-edge 0.8279 set color 9]
-  ask link 6 12  [set weight-edge 0.2585 set color 9]
-  ask link 6 13  [set weight-edge 0.4514 set color 9]
-  ask link 7 9   [set weight-edge 0.4048 set color 9]
-  ask link 7 10  [set weight-edge 1.4768 set color 9]
-  ask link 7 11  [set weight-edge 0.2708 set color 9]
-  ask link 7 12  [set weight-edge 0.0597 set color 9]
-  ask link 7 13  [set weight-edge 0.2151 set color 9]
-  ask link 8 10  [set weight-edge 0.3751 set color 9]
-  ask link 8 11  [set weight-edge 0.3893 set color 9]
-  ask link 8 12  [set weight-edge 0.9414 set color 9]
-  ask link 8 13  [set weight-edge 0.1939 set color 9]
-  ask link 9 10  [set weight-edge 1.5718 set color 9]
-  ask link 9 11  [set weight-edge 0.3491 set color 9]
-  ask link 9 12  [set weight-edge 0.7233 set color 9]
-  ask link 9 13  [set weight-edge 0.1407 set color 9]
-  ask link 10 11 [set weight-edge 0.2362 set color 9]
-  ask link 10 12 [set weight-edge 0.4935 set color 9]
-  ask link 11 12 [set weight-edge 0.666 set color 9]
-  ask link 11 13 [set weight-edge 1.4769 set color 9]
-  ask link 12 13 [set weight-edge 0.2156 set color 9]
+  ask link 0 1   [set weight-edge 2.1407 set color 2]
+  ask link 0 2   [set weight-edge 0.7232 set color 2]
+  ask link 0 3   [set weight-edge 0.2041 set color 2]
+  ask link 0 4   [set weight-edge 1.1296 set color 2]
+  ask link 0 5   [set weight-edge 0.5217 set color 2]
+  ask link 0 6   [set weight-edge 1.0530 set color 2]
+  ask link 0 7   [set weight-edge 0.9409 set color 2]
+  ask link 0 8   [set weight-edge 0.7484 set color 2]
+  ask link 0 9   [set weight-edge 0.6849 set color 2]
+  ask link 0 10  [set weight-edge 1.0979 set color 2]
+  ask link 0 11  [set weight-edge 1.8733 set color 2]
+  ask link 0 12  [set weight-edge 1.0211 set color 2]
+  ask link 0 13  [set weight-edge 2.0693 set color 2]
+  ask link 1 2   [set weight-edge 0.1766 set color 2]
+  ask link 1 3   [set weight-edge 0.2811 set color 2]
+  ask link 1 4   [set weight-edge 0.5763 set color 2]
+  ask link 1 5   [set weight-edge 0.2392 set color 2]
+  ask link 1 6   [set weight-edge 0.4273 set color 2]
+  ask link 1 7   [set weight-edge 0.5311 set color 2]
+  ask link 1 8   [set weight-edge 0.4459 set color 2]
+  ask link 1 9   [set weight-edge 0.6564 set color 2]
+  ask link 1 10  [set weight-edge 0.5070 set color 2]
+  ask link 1 11  [set weight-edge 0.6826 set color 2]
+  ask link 1 12  [set weight-edge 0.8178 set color 2]
+  ask link 1 13  [set weight-edge 0.4986 set color 2]
+  ask link 2 3   [set weight-edge -0.6082 set color 2]
+  ask link 2 4   [set weight-edge 2.9840 set color 2]
+  ask link 2 6   [set weight-edge 0.2045 set color 2]
+  ask link 2 11  [set weight-edge 0.3772 set color 2]
+  ask link 2 12  [set weight-edge 0.1063 set color 2]
+  ask link 2 13  [set weight-edge 0.252 set color 2]
+  ask link 3 4   [set weight-edge -0.5389 set color 2]
+  ask link 3 5   [set weight-edge 3.165 set color 2]
+  ask link 3 6   [set weight-edge 0.2672 set color 2]
+  ask link 3 7   [set weight-edge 0.2041 set color 2]
+  ask link 3 10  [set weight-edge 0.4112 set color 2]
+  ask link 3 11  [set weight-edge 0.5226 set color 2]
+  ask link 4 6   [set weight-edge 0.7033 set color 2]
+  ask link 4 7   [set weight-edge 0.4020 set color 2]
+  ask link 4 8   [set weight-edge 0.4724 set color 2]
+  ask link 4 9   [set weight-edge 0.2219 set color 2]
+  ask link 4 10  [set weight-edge 0.2284 set color 2]
+  ask link 4 11  [set weight-edge 0.1203 set color 2]
+  ask link 4 12  [set weight-edge 0.4177 set color 2]
+  ask link 4 13  [set weight-edge 0.1198 set color 2]
+  ask link 5 7   [set weight-edge 0.5475 set color 2]
+  ask link 5 8   [set weight-edge 0.4890 set color 2]
+  ask link 5 9   [set weight-edge 0.2914 set color 2]
+  ask link 5 10  [set weight-edge 0.4546 set color 2]
+  ask link 5 13  [set weight-edge 0.1620 set color 2]
+  ask link 6 7   [set weight-edge -0.5009 set color 2]
+  ask link 6 8   [set weight-edge 1.2951 set color 2]
+  ask link 6 10  [set weight-edge 0.8279 set color 2]
+  ask link 6 12  [set weight-edge 0.2585 set color 2]
+  ask link 6 13  [set weight-edge 0.4514 set color 2]
+  ask link 7 9   [set weight-edge 0.4048 set color 2]
+  ask link 7 10  [set weight-edge 1.4768 set color 2]
+  ask link 7 11  [set weight-edge 0.2708 set color 2]
+  ask link 7 12  [set weight-edge 0.0597 set color 2]
+  ask link 7 13  [set weight-edge 0.2151 set color 2]
+  ask link 8 10  [set weight-edge 0.3751 set color 2]
+  ask link 8 11  [set weight-edge 0.3893 set color 2]
+  ask link 8 12  [set weight-edge 0.9414 set color 2]
+  ask link 8 13  [set weight-edge 0.1939 set color 2]
+  ask link 9 10  [set weight-edge 1.5718 set color 2]
+  ask link 9 11  [set weight-edge 0.3491 set color 2]
+  ask link 9 12  [set weight-edge 0.7233 set color 2]
+  ask link 9 13  [set weight-edge 0.1407 set color 2]
+  ask link 10 11 [set weight-edge 0.2362 set color 2]
+  ask link 10 12 [set weight-edge 0.4935 set color 2]
+  ask link 11 12 [set weight-edge 0.666 set color 2]
+  ask link 11 13 [set weight-edge 1.4769 set color 2]
+  ask link 12 13 [set weight-edge 0.2156 set color 2]
 
 end
 
@@ -322,20 +324,20 @@ to calculate-chance-to-become-activated
 end
 
 to ind-stress
-ask symptom 0  [set individual-stress Depmood]
-ask symptom 1  [set individual-stress Lossint]
-ask symptom 2  [set individual-stress Wloss]
-ask symptom 3  [set individual-stress Wgain]
-ask symptom 4  [set individual-stress Dapp]
-ask symptom 5  [set individual-stress Iapp]
-ask symptom 6  [set individual-stress Insom]
-ask symptom 7  [set individual-stress Hypersom]
-ask symptom 8  [set individual-stress Pagit]
-ask symptom 9  [set individual-stress Pretar]
+ask symptom 0  [set individual-stress Depressed-mood]
+ask symptom 1  [set individual-stress Loss-of-interest]
+ask symptom 2  [set individual-stress Weight-loss]
+ask symptom 3  [set individual-stress Weight-gain]
+ask symptom 4  [set individual-stress Decreased-appetite]
+ask symptom 5  [set individual-stress Increased-appetite]
+ask symptom 6  [set individual-stress Insomnia]
+ask symptom 7  [set individual-stress Hypersomnia]
+ask symptom 8  [set individual-stress Psychomotor-agitation]
+ask symptom 9  [set individual-stress Psychomotor-retardation]
 ask symptom 10 [set individual-stress Fatigue]
-ask symptom 11 [set individual-stress Worthless]
-ask symptom 12 [set individual-stress Conc]
-ask symptom 13 [set individual-stress Death]
+ask symptom 11 [set individual-stress Worthlessness]
+ask symptom 12 [set individual-stress Concentration-problems]
+ask symptom 13 [set individual-stress Suicidal-thoughts]
 end
 
 
@@ -344,7 +346,7 @@ end
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 to episode-counter
-  if ticks >= 500 [
+  if ticks >= 300 [
     let last14days sublist mood (length mood - 14) (length mood)
     ifelse length (filter [i -> i >= 7] last14days) = 14
     [ifelse episode-continue?
@@ -425,6 +427,11 @@ to update-plot
 
   set-current-plot "Hysteresis plot"
   set-current-plot-pen "symptom-present"
+  ifelse external-activation >= external-stress
+  [set-plot-pen-color 15
+ set external-stress external-activation ]
+  [set-plot-pen-color 105]
+ ;set external-stress external-activation ]
   plotxy (external-activation) (mean mood)        ;(count symptoms with [symptom-present?])
 
   set-current-plot "Depressive episodes"
@@ -460,7 +467,7 @@ GRAPHICS-WINDOW
 -1
 13.82
 1
-10
+12
 1
 1
 1
@@ -567,7 +574,7 @@ PLOT
 780
 Hysteresis plot
 external activation (stress)
-Total active symptoms
+Avg. active symptoms
 0.0
 10.0
 0.0
@@ -600,8 +607,8 @@ SLIDER
 12
 912
 45
-Depmood
-Depmood
+Depressed-mood
+Depressed-mood
 -5
 5
 0.0
@@ -615,8 +622,8 @@ SLIDER
 58
 912
 91
-Lossint
-Lossint
+Loss-of-interest
+Loss-of-interest
 -5
 5
 0.0
@@ -630,8 +637,8 @@ SLIDER
 104
 913
 137
-Wloss
-Wloss
+Weight-loss
+Weight-loss
 -5
 5
 0.0
@@ -645,8 +652,8 @@ SLIDER
 150
 914
 183
-Wgain
-Wgain
+Weight-gain
+Weight-gain
 -5
 5
 0.0
@@ -660,8 +667,8 @@ SLIDER
 197
 915
 230
-Dapp
-Dapp
+Decreased-appetite
+Decreased-appetite
 -5
 5
 0.0
@@ -675,8 +682,8 @@ SLIDER
 242
 915
 275
-Iapp
-Iapp
+Increased-appetite
+Increased-appetite
 -5
 5
 0.0
@@ -686,12 +693,12 @@ NIL
 HORIZONTAL
 
 SLIDER
-742
-288
-914
-321
-Insom
-Insom
+744
+285
+916
+318
+Insomnia
+Insomnia
 -5
 5
 0.0
@@ -703,10 +710,10 @@ HORIZONTAL
 SLIDER
 941
 12
-1114
+1119
 45
-Hypersom
-Hypersom
+Hypersomnia
+Hypersomnia
 -5
 5
 0.0
@@ -718,10 +725,10 @@ HORIZONTAL
 SLIDER
 943
 57
-1115
+1119
 90
-Pagit
-Pagit
+Psychomotor-agitation
+Psychomotor-agitation
 -5
 5
 0.0
@@ -733,10 +740,10 @@ HORIZONTAL
 SLIDER
 943
 105
-1115
+1122
 138
-Pretar
-Pretar
+Psychomotor-retardation
+Psychomotor-retardation
 -5
 5
 0.0
@@ -746,10 +753,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-946
-150
-1115
-183
+945
+149
+1120
+182
 Fatigue
 Fatigue
 -5
@@ -763,10 +770,10 @@ HORIZONTAL
 SLIDER
 946
 196
-1118
+1122
 229
-Worthless
-Worthless
+Worthlessness
+Worthlessness
 -5
 5
 0.0
@@ -778,10 +785,10 @@ HORIZONTAL
 SLIDER
 947
 242
-1119
+1122
 275
-Conc
-Conc
+Concentration-problems
+Concentration-problems
 -5
 5
 0.0
@@ -793,10 +800,10 @@ HORIZONTAL
 SLIDER
 948
 288
-1120
+1123
 321
-Death
-Death
+Suicidal-thoughts
+Suicidal-thoughts
 -5
 5
 0.0
@@ -841,12 +848,12 @@ PLOT
 1107
 780
 Depressive episodes
-time
-Depressive-episode?
+Time
+1- Depressed , 0- Non-Depressed
 0.0
 10.0
 0.0
-1.0
+2.0
 true
 true
 "" ""
